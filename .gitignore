@@ -1,0 +1,11 @@
+# build output
+build/
+*.dll
+*.obj
+*.lib
+*.exp
+*.pdb
+# game-derived data never goes in this public repo (AGENTS.md 7b)
+romfs/
+*.nso
+*.ips
