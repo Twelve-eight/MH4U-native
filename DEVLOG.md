@@ -15,6 +15,6 @@
 - `DEVELOP.md`（DsvMh4uDesign，dsv-dev wb2api-remote/deepseek-v4.1-flash:max）；复核 DsvMh4uDesignReview 3 项必查 PASS，提出的 4 处契约缺陷已修。未构建、未运行；V1-V12 是实机待办。
 
 ## 2026-10-24 M0 探针
-- 站点数实为 **110**：build.py HOOKS 65 个 + gear_hooks.txt 45 个，地址各不相同。研究报告的 113 多算了 3 个：它说的 3 个 item hook 其实已经在 HOOKS 里（`item_data_loaded`/`item_text_loaded`/`bui_record`）。`stats_hunted` 被注释掉了，不计入。
+- 站点数为 **113**，与 DEVELOP.md 一致：build.py HOOKS 65 个、gear_hooks.txt 45 个（`build.py:119`），再加 3 个 item 替换 hook `obtained_set/clear/test`（`build.py:193-195`，条件是 `if ITEMS_APPENDED`，移植总会追加道具，所以一定注册）。113 个地址各不相同。`stats_hunted` 在注释里，不计入。（同日初稿误写成 110：当时只解析了 `HOOKS = [...]` 和 gear 表，漏了 :194 的追加；现在生成器会断言 HOOKS 只有这两处追加。）
 - 上游本地克隆在 `.tmp/ext/MH4U-port-to-MHGU`（d43eec0）。`tools/gen_sites.mjs` 由它生成 `probe/sites.h`，原始指令字取自 1.4.0 flat 镜像。
-- `probe/mh4uprobe.c` 只读，编译 /W4 零警告。伪宿主上 110/110 个指令字都对上；B1/B2/B3 分桶要实机才能定。主模块在导出里的基址是 0x00653000（BoxProbe 实测），上游假设的是 0x704000。
+- `probe/mh4uprobe.c` 只读，编译 /W4 零警告。伪宿主上 113/113 个指令字都对上；B1/B2/B3 分桶要实机才能定。主模块在导出里的基址是 0x00653000（BoxProbe 实测），上游假设的是 0x704000。
