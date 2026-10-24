@@ -10,3 +10,6 @@
   - `api->call` 里遇到系统调用就会失败，所以上游 `module_init` 的 `logf`（走 svc）要改成 `api->log`（复核第 7 条）。
   - 上游有个缺陷：`stats_hunted`（0x3A3930）在 build.py:59 被注释掉了，一直没注册。
 - 下一步：写 `DEVELOP.md` 移植设计（加载器插件结构、hook 表、立即数站点的改写方式、模块注入与重定位），还要先跑 BoxProbe 确认 hook 块起点的判定。
+
+## 2026-10-24 设计文档
+- `DEVELOP.md`（DsvMh4uDesign，dsv-dev wb2api-remote/deepseek-v4.1-flash:max）；复核 DsvMh4uDesignReview 3 项必查 PASS，提出的 4 处契约缺陷已修。未构建、未运行；V1-V12 是实机待办。
